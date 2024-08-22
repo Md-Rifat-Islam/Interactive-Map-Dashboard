@@ -2,11 +2,15 @@
 from flask import Flask, send_from_directory
 import folium
 from folium.plugins import Draw
+import os
 
 app = Flask(__name__)
 
+# Ensure the static directory exists
+os.makedirs('static', exist_ok=True)
+
 # Generate the map and save it as an HTML file
-@app.before_first_request
+#@app.before_first_request
 def generate_map():
     center_location = [24.3961, 88.6041]
     m = folium.Map(location=center_location, zoom_start=15,
